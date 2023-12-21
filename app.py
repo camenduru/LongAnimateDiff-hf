@@ -33,21 +33,18 @@ css = """
 examples = [
     # 12-EpicRealism
     [
-        "epiCRealismNaturalSin.safetensors", 
         "photo of coastline, rocks, storm weather, wind, waves, lightning, 8k uhd, dslr, soft lighting, high quality, film grain, Fujifilm XT3",
         "blur, haze, deformed iris, deformed pupils, semi-realistic, cgi, 3d, render, sketch, cartoon, drawing, anime, mutated hands and fingers, deformed, distorted, disfigured, poorly drawn, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, disconnected limbs, mutation, mutated, ugly, disgusting, amputation",
         512, 512, 32, "1490157606650685400"
     ],
     # 2-EpicRealism
     [
-        "epiCRealismNaturalSin.safetensors", 
         "a young man is dancing in a paris nice street",
         "wrong anatomy, extra limb, missing limb, floating limbs, disconnected limbs, mutation, mutated, ugly, disgusting, amputation render, illustration, deformed, distorted, disfigured, doll, poorly drawn, bad anatomy, wrong anatomy deformed, naked, nude, breast (worst quality low quality: 1.4)",
         512, 512, 32, "1"
     ],
     # 3-EpicRealism
     [
-        "epiCRealismNaturalSin.safetensors", 
         "photo of coastline, rocks, storm weather, wind, waves, lightning, 8k uhd, dslr, soft lighting, high quality, film grain, Fujifilm XT3",
         "blur, haze, deformed iris, deformed pupils, semi-realistic, cgi, 3d, render, sketch, cartoon, drawing, anime, mutated hands and fingers, deformed, distorted, disfigured, poorly drawn, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, disconnected limbs, mutation, mutated, ugly, disgusting, amputation",
         512, 512, 32, "13100322578370451493"
@@ -128,7 +125,6 @@ class AnimateController:
     
     def animate(
         self,
-        # base_model_dropdown,
         prompt_textbox,
         negative_prompt_textbox,
         width_slider,
@@ -196,14 +192,13 @@ def ui():
         gr.Markdown(
             """
             ### Quick Start
-            1. Select desired `Base DreamBooth Model`.
-            2. Provide `Prompt` and `Negative Prompt` for each model. You are encouraged to refer to each model's webpage on CivitAI to learn how to write prompts for them. Below are the DreamBooth models in this demo. Click to visit their homepage.
+            1. Provide `Prompt` and `Negative Prompt` for each model. You are encouraged to refer to each model's webpage on CivitAI to learn how to write prompts for them. Below are the DreamBooth models in this demo. Click to visit their homepage.
                 - [`toonyou_beta3.safetensors`](https://civitai.com/models/30240?modelVersionId=78775)
                 - [`epiCRealismNatural.safetensors`](https://civitai.com/models/25694/epicrealism)
-            3. Select 'Length' to set the length of the generated video. 
+            2. Select 'Length' to set the length of the generated video. 
                (When you are working with ComfyUI try all possible length, with different motion_scale)
-            4. Click `Generate`, wait for ~2 min, and enjoy. 
-            5. In order to effectively utilize 'lt_long_mm_16_64_frames' model, it is highly recommended to use the ComfyUI interface, which enables to easily increase 'motion_scale' parameter and facilitates using the model in a video-to-video context.
+            3. Click `Generate`, wait for ~2 min, and enjoy. 
+            4. In order to effectively utilize 'lt_long_mm_16_64_frames' model, it is highly recommended to use the ComfyUI interface, which enables to easily increase 'motion_scale' parameter and facilitates using the model in a video-to-video context.
             """
         )
         with gr.Row():
@@ -235,7 +230,7 @@ def ui():
                 result_video = gr.Video( label="Generated Animation", interactive=False )
                 json_config  = gr.Json( label="Config", value=None )
 
-            inputs  = [base_model_dropdown, prompt_textbox, negative_prompt_textbox, width_slider, height_slider, video_length, seed_textbox]
+            inputs  = [prompt_textbox, negative_prompt_textbox, width_slider, height_slider, video_length, seed_textbox]
             
             outputs = [result_video, json_config]
             
