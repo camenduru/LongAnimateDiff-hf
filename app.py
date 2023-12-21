@@ -38,27 +38,27 @@ examples = [
         "worst quality, low quality, nsfw, logo",
         512, 512, 32, "13204175718326964000"
     ],
-    # 2-EpicRealism
-    [
-        "epiCRealismNaturalSin.safetensors", 
-        "photo of coastline, rocks, storm weather, wind, waves, lightning, 8k uhd, dslr, soft lighting, high quality, film grain, Fujifilm XT3",
-        "blur, haze, deformed iris, deformed pupils, semi-realistic, cgi, 3d, render, sketch, cartoon, drawing, anime, mutated hands and fingers, deformed, distorted, disfigured, poorly drawn, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, disconnected limbs, mutation, mutated, ugly, disgusting, amputation",
-        512, 512, 32, "1490157606650685400"
-    ],
-    # 3-EpicRealism
-    [
-        "epiCRealismNaturalSin.safetensors", 
-        "a young man is dancing in a paris nice street",
-        "wrong anatomy, extra limb, missing limb, floating limbs, disconnected limbs, mutation, mutated, ugly, disgusting, amputation render, illustration, deformed, distorted, disfigured, doll, poorly drawn, bad anatomy, wrong anatomy deformed, naked, nude, breast (worst quality low quality: 1.4)",
-        512, 512, 32, "1"
-    ],
-    # 4-EpicRealism
-    [
-        "epiCRealismNaturalSin.safetensors", 
-        "photo of coastline, rocks, storm weather, wind, waves, lightning, 8k uhd, dslr, soft lighting, high quality, film grain, Fujifilm XT3",
-        "blur, haze, deformed iris, deformed pupils, semi-realistic, cgi, 3d, render, sketch, cartoon, drawing, anime, mutated hands and fingers, deformed, distorted, disfigured, poorly drawn, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, disconnected limbs, mutation, mutated, ugly, disgusting, amputation",
-        512, 512, 32, "13100322578370451493"
-    ]
+    # # 2-EpicRealism
+    # [
+    #     "epiCRealismNaturalSin.safetensors", 
+    #     "photo of coastline, rocks, storm weather, wind, waves, lightning, 8k uhd, dslr, soft lighting, high quality, film grain, Fujifilm XT3",
+    #     "blur, haze, deformed iris, deformed pupils, semi-realistic, cgi, 3d, render, sketch, cartoon, drawing, anime, mutated hands and fingers, deformed, distorted, disfigured, poorly drawn, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, disconnected limbs, mutation, mutated, ugly, disgusting, amputation",
+    #     512, 512, 32, "1490157606650685400"
+    # ],
+    # # 3-EpicRealism
+    # [
+    #     "epiCRealismNaturalSin.safetensors", 
+    #     "a young man is dancing in a paris nice street",
+    #     "wrong anatomy, extra limb, missing limb, floating limbs, disconnected limbs, mutation, mutated, ugly, disgusting, amputation render, illustration, deformed, distorted, disfigured, doll, poorly drawn, bad anatomy, wrong anatomy deformed, naked, nude, breast (worst quality low quality: 1.4)",
+    #     512, 512, 32, "1"
+    # ],
+    # # 4-EpicRealism
+    # [
+    #     "epiCRealismNaturalSin.safetensors", 
+    #     "photo of coastline, rocks, storm weather, wind, waves, lightning, 8k uhd, dslr, soft lighting, high quality, film grain, Fujifilm XT3",
+    #     "blur, haze, deformed iris, deformed pupils, semi-realistic, cgi, 3d, render, sketch, cartoon, drawing, anime, mutated hands and fingers, deformed, distorted, disfigured, poorly drawn, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, disconnected limbs, mutation, mutated, ugly, disgusting, amputation",
+    #     512, 512, 32, "13100322578370451493"
+    # ]
 ]
 print(f"### Cleaning cached examples ...")
 os.system(f"rm -rf gradio_cached_examples/")
