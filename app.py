@@ -31,34 +31,27 @@ css = """
 """
 
 examples = [
-    # 1-ToonYou
+    # 12-EpicRealism
     [
-        "toonyou_beta3.safetensors", 
-        "masterpiece, best quality, 1girl, solo, cherry blossoms, hanami, pink flower, white flower, spring season, wisteria, petals, flower, plum blossoms, outdoors, falling petals, white hair, black eyes",
-        "worst quality, low quality, nsfw, logo",
-        512, 512, 32, "13204175718326964000"
+        "epiCRealismNaturalSin.safetensors", 
+        "photo of coastline, rocks, storm weather, wind, waves, lightning, 8k uhd, dslr, soft lighting, high quality, film grain, Fujifilm XT3",
+        "blur, haze, deformed iris, deformed pupils, semi-realistic, cgi, 3d, render, sketch, cartoon, drawing, anime, mutated hands and fingers, deformed, distorted, disfigured, poorly drawn, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, disconnected limbs, mutation, mutated, ugly, disgusting, amputation",
+        512, 512, 32, "1490157606650685400"
     ],
-    # # 2-EpicRealism
-    # [
-    #     "epiCRealismNaturalSin.safetensors", 
-    #     "photo of coastline, rocks, storm weather, wind, waves, lightning, 8k uhd, dslr, soft lighting, high quality, film grain, Fujifilm XT3",
-    #     "blur, haze, deformed iris, deformed pupils, semi-realistic, cgi, 3d, render, sketch, cartoon, drawing, anime, mutated hands and fingers, deformed, distorted, disfigured, poorly drawn, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, disconnected limbs, mutation, mutated, ugly, disgusting, amputation",
-    #     512, 512, 32, "1490157606650685400"
-    # ],
-    # # 3-EpicRealism
-    # [
-    #     "epiCRealismNaturalSin.safetensors", 
-    #     "a young man is dancing in a paris nice street",
-    #     "wrong anatomy, extra limb, missing limb, floating limbs, disconnected limbs, mutation, mutated, ugly, disgusting, amputation render, illustration, deformed, distorted, disfigured, doll, poorly drawn, bad anatomy, wrong anatomy deformed, naked, nude, breast (worst quality low quality: 1.4)",
-    #     512, 512, 32, "1"
-    # ],
-    # # 4-EpicRealism
-    # [
-    #     "epiCRealismNaturalSin.safetensors", 
-    #     "photo of coastline, rocks, storm weather, wind, waves, lightning, 8k uhd, dslr, soft lighting, high quality, film grain, Fujifilm XT3",
-    #     "blur, haze, deformed iris, deformed pupils, semi-realistic, cgi, 3d, render, sketch, cartoon, drawing, anime, mutated hands and fingers, deformed, distorted, disfigured, poorly drawn, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, disconnected limbs, mutation, mutated, ugly, disgusting, amputation",
-    #     512, 512, 32, "13100322578370451493"
-    # ]
+    # 2-EpicRealism
+    [
+        "epiCRealismNaturalSin.safetensors", 
+        "a young man is dancing in a paris nice street",
+        "wrong anatomy, extra limb, missing limb, floating limbs, disconnected limbs, mutation, mutated, ugly, disgusting, amputation render, illustration, deformed, distorted, disfigured, doll, poorly drawn, bad anatomy, wrong anatomy deformed, naked, nude, breast (worst quality low quality: 1.4)",
+        512, 512, 32, "1"
+    ],
+    # 3-EpicRealism
+    [
+        "epiCRealismNaturalSin.safetensors", 
+        "photo of coastline, rocks, storm weather, wind, waves, lightning, 8k uhd, dslr, soft lighting, high quality, film grain, Fujifilm XT3",
+        "blur, haze, deformed iris, deformed pupils, semi-realistic, cgi, 3d, render, sketch, cartoon, drawing, anime, mutated hands and fingers, deformed, distorted, disfigured, poorly drawn, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, disconnected limbs, mutation, mutated, ugly, disgusting, amputation",
+        512, 512, 32, "13100322578370451493"
+    ]
 ]
 print(f"### Cleaning cached examples ...")
 os.system(f"rm -rf gradio_cached_examples/")
@@ -89,7 +82,7 @@ class AnimateController:
         self.vae                   = AutoencoderKL.from_pretrained(pretrained_model_path, subfolder="vae").cuda()
         self.text_encoder          = CLIPTextModel.from_pretrained(pretrained_model_path, subfolder="text_encoder").cuda()
         self.unet                  = UNet3DConditionModel.from_pretrained_2d(pretrained_model_path, subfolder="unet", unet_additional_kwargs=OmegaConf.to_container(self.inference_config.unet_additional_kwargs)).cuda()
-        self.base_model_list = ['toonyou_beta3.safetensors', 'epiCRealismNaturalSin.safetensors']
+        self.base_model_list = ['epiCRealismNaturalSin.safetensors']
         self.motion_module_list = ['lt_long_mm_32_frames.ckpt']
 
         print(self.base_model_list[0])
@@ -135,7 +128,7 @@ class AnimateController:
     
     def animate(
         self,
-        base_model_dropdown,
+        # base_model_dropdown,
         prompt_textbox,
         negative_prompt_textbox,
         width_slider,
@@ -143,7 +136,7 @@ class AnimateController:
         video_length,
         seed_textbox,
     ):
-        if base_model_dropdown != self.selected_base_model: self.update_base_model(base_model_dropdown)
+        # if base_model_dropdown != self.selected_base_model: self.update_base_model(base_model_dropdown)
         # if motion_module_dropdown != self.selected_motion_module: self.update_motion_module(motion_module_dropdown)
         
         if is_xformers_available(): self.unet.enable_xformers_memory_efficient_attention()
@@ -215,11 +208,11 @@ def ui():
         )
         with gr.Row():
             with gr.Column():
-                base_model_dropdown     = gr.Dropdown( label="Base DreamBooth Model", choices=controller.base_model_list,    value=controller.base_model_list[0],    interactive=True )
-                motion_module_dropdown  = gr.Dropdown( label="Motion Module",  choices=controller.motion_module_list, value=controller.motion_module_list[0], interactive=True )
+                # base_model_dropdown     = gr.Dropdown( label="Base DreamBooth Model", choices=controller.base_model_list,    value=controller.base_model_list[0],    interactive=True )
+                # motion_module_dropdown  = gr.Dropdown( label="Motion Module",  choices=controller.motion_module_list, value=controller.motion_module_list[0], interactive=True )
 
-                base_model_dropdown.change(fn=controller.update_base_model,       inputs=[base_model_dropdown],    outputs=[base_model_dropdown])
-                motion_module_dropdown.change(fn=controller.update_motion_module, inputs=[motion_module_dropdown], outputs=[motion_module_dropdown])
+                # base_model_dropdown.change(fn=controller.update_base_model,       inputs=[base_model_dropdown],    outputs=[base_model_dropdown])
+                # motion_module_dropdown.change(fn=controller.update_motion_module, inputs=[motion_module_dropdown], outputs=[motion_module_dropdown])
 
                 prompt_textbox          = gr.Textbox( label="Prompt",          lines=3 )
                 negative_prompt_textbox = gr.Textbox( label="Negative Prompt", lines=3, value="worst quality, low quality, nsfw, logo")
