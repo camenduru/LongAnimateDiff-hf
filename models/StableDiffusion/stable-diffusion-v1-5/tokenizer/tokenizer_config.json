@@ -1,0 +1,34 @@
+{
+  "add_prefix_space": false,
+  "bos_token": {
+    "__type": "AddedToken",
+    "content": "<|startoftext|>",
+    "lstrip": false,
+    "normalized": true,
+    "rstrip": false,
+    "single_word": false
+  },
+  "do_lower_case": true,
+  "eos_token": {
+    "__type": "AddedToken",
+    "content": "<|endoftext|>",
+    "lstrip": false,
+    "normalized": true,
+    "rstrip": false,
+    "single_word": false
+  },
+  "errors": "replace",
+  "model_max_length": 77,
+  "name_or_path": "/home/ubuntu/.cache/huggingface/diffusers/models--runwayml--stable-diffusion-v1-5/snapshots/7c6845fc64b3a99bff7dbc24a86595a8537ffe93/tokenizer",
+  "pad_token": "<|endoftext|>",
+  "special_tokens_map_file": "./special_tokens_map.json",
+  "tokenizer_class": "CLIPTokenizer",
+  "unk_token": {
+    "__type": "AddedToken",
+    "content": "<|endoftext|>",
+    "lstrip": false,
+    "normalized": true,
+    "rstrip": false,
+    "single_word": false
+  }
+}
