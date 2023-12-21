@@ -113,9 +113,6 @@ class AnimateController:
         
         base_model_dropdown = os.path.join(self.personalized_model_dir, base_model_dropdown)
         base_model_state_dict = {}
-        print(os.getcwd())
-        print(base_model_dropdown)
-        print(os.path.exists(base_model_dropdown))
         with safe_open(base_model_dropdown, framework="pt", device="cpu") as f:
             for key in f.keys(): base_model_state_dict[key] = f.get_tensor(key)
                 
@@ -126,7 +123,6 @@ class AnimateController:
         self.unet.load_state_dict(converted_unet_checkpoint, strict=False)
 
         self.text_encoder = convert_ldm_clip_checkpoint(base_model_state_dict)
-        # return gr.Dropdown.update()
 
     def update_motion_module(self, motion_module_dropdown):
         self.selected_motion_module = motion_module_dropdown
