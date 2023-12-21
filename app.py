@@ -166,7 +166,6 @@ class AnimateController:
             "width": width_slider,
             "height": height_slider,
             "seed": seed,
-            "base_model": base_model_dropdown,
         }
         return save_sample_path, json_config
         
