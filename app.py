@@ -210,7 +210,7 @@ def ui():
             3. Select 'Length' to set the length of the generated video. 
                (When you are working with ComfyUI try all possible length, with different motion_scale)
             4. Click `Generate`, wait for ~2 min, and enjoy. 
-            5. In order to effectively utilize 'lt_long_mm_16_64_frames' model, it is highly recommended to use the ComfyUI interface, which enablesto easily increase 'motion_scale' parameter and facilitates using the model in a video-to-video context.
+            5. In order to effectively utilize 'lt_long_mm_16_64_frames' model, it is highly recommended to use the ComfyUI interface, which enables to easily increase 'motion_scale' parameter and facilitates using the model in a video-to-video context.
             """
         )
         with gr.Row():
