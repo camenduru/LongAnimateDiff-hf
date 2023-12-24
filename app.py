@@ -229,7 +229,7 @@ def ui():
             
             generate_button.click( fn=controller.animate, inputs=inputs, outputs=outputs )
                 
-        gr.Examples( fn=controller.animate, examples=examples, inputs=inputs, outputs=outputs, cache_examples=True )
+        gr.Examples( fn=controller.animate, examples=examples, inputs=inputs, outputs=outputs, cache_examples=False )
         
     return demo
 
@@ -237,4 +237,4 @@ def ui():
 if __name__ == "__main__":
     demo = ui()
     demo.queue(max_size=20)
-    demo.launch()
+    demo.launch(share=True)
